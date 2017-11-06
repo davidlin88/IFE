@@ -27,6 +27,7 @@ top: 0;right: 0;bottom: 0;left: 0;
  ```
   进行定位，原理是用`margin: 0 auto;`让div水平居中，再用`top: 50%;`让div下移父元素50%高度，最后`transform: translateY(-50%);`往上移回div高度的50%，注意，这里要**对body和html标签添加`height=100%`，否则他两的高度会以div的高度为准撑开，无法占满屏幕**;
 ## 任务五
+[代码预览](https://davidlin88.github.io/IFE/任务五.html)
 ### Tips：
 * header左侧的logo素材上下空白留底过多，此处使用`margin:-19px`将logo移到合适的位置
 * 链接居右通过对header增加`text-align:right`属性实现，同时让内容撑开header容器
