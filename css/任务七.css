@@ -19,10 +19,7 @@ a{
 button:focus{
 	outline: none;
 }
-a:active{
-	text-decoration: none;
-}
-button:hover{
+a,button:hover{
 	cursor:pointer;
 }
 
@@ -406,14 +403,7 @@ li{
 	height: 282px;
 	float: left;
 }
-#part8:after{
-	content: "";
-	clear: both;
-	height: 0;
-	display: block;
-	visibility: hidden;
-	line-height: 0;
-}
+
 input{
 	width: 310px;
 	height: 39px;
