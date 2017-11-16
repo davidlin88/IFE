@@ -14,7 +14,16 @@ body{
 }
 a{
 	text-decoration: none;
-	color: #fff;
+	color: #000;
+}
+button:focus{
+	outline: none;
+}
+a:active{
+	text-decoration: none;
+}
+button:hover{
+	cursor:pointer;
 }
 
 /*字体大小和颜色*/
@@ -97,10 +106,11 @@ a{
 /*头部*/
 header{
 	width: 100%;
-	height: 50px;
+	height: 56px;
 }
 #logo{
-	margin: 10px auto 10px 60px;
+	padding-top: 13px;
+	margin-left: 59px;
 }
 #logo img{
 	vertical-align: bottom;
@@ -115,17 +125,19 @@ li{
 	display: inline-block;
 	text-align: center;
 }
+.active{
+	border-bottom: 4px solid #e74f4d;
+}
 .yahei{
 	font-family: "微软雅黑";
 }
-#part2::after{
-	content: "";
-	display: block;
-	height: 0;
-	clear: both;
-}
+
 #nav li{
-	margin: 5px 50px auto auto;
+	width: 90px;
+	height: 56px;
+}
+#nav a{
+	line-height: 56px;
 }
 .nav-title{
 	display: inline-block;
@@ -168,6 +180,12 @@ li{
 .part2{
 	width: 100%;
 	margin: 44px auto 65px auto;
+}
+#part2::after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
 }
 .part2 > li{
 	width: 318px;
