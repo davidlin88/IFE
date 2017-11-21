@@ -134,7 +134,7 @@ button:focus{
 * 添加指针在按钮和超链接等悬浮时的动画
 * 添加下拉菜单的样式
 * 等等
-## :sunny:任务八：响应式网格（栅格化）
+## :sunny:任务八-响应式网格（栅格化）
 [代码预览](https://davidlin88.github.io/IFE/任务八-响应式网格-栅格化.html)
 ### Tips:
 * 此响应式网格实现原理：css3的media queries（媒体查询），即判断设备，引用不同的css代码;
@@ -171,3 +171,18 @@ button:focus{
 }
 ```
 * 在使用百分百宽高时，`width:calc(100%-20px)`很方便
+* 针对浏览器支持的最小中文字体为12px解决办法：使用`transform`按比缩放，如：
+```
+.fs10{
+	font-size: 12px;
+	transform:scale(0.83);
+	display: inline-block;
+}
+```
+## :sunny:任务九-报表查询页面
+[代码预览](https://davidlin88.github.io/IFE/任务九-报表查询页面.html)
+* `box-shadow`使用`inset`属性时，x和y坐标都要加个负号才和原来阴影位置相同
+* 180度旋转元素（此处是上下页的按钮）：`transform:rotate(180deg);`
+* 单独的圆角：`border-radius:5px 5px 0 0;`顺序依次是左上、右上、右下、左下
+* 表格单元格间隙：`border-spacing: 3px;`
+* css顺序选择`:nth-child(n)`，倒序选择：`:nth-last-child(n)`，父元素的末位子元素：`:last-child`
