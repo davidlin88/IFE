@@ -196,4 +196,4 @@ button:focus{
 [flex语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 [flex实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
 * `@media`媒体查询里`max-width`和`min-width`都包含那个值本身
-* `flex-wrap: wrap;`换行后，交叉轴的定位要用`align-content`而不是`align-item`
+* `flex-wrap: wrap;`换行后，交叉轴的定位要用`align-content`而不是`align-items`
