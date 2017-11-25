@@ -2,24 +2,24 @@
 此篇写一些做任务中的笔记，欢迎交流指正~~
 
 点击跳转：
-* [任务三-三栏式布局](#任务三-三栏式布局)
-* [任务四-定位和居中](#任务四-定位和居中)
+* [任务三-定位和居中](#任务三-定位和居中)
+* [任务四-三栏式布局](#任务四-三栏式布局)
 * [任务五-简单排版](#任务五-简单排版)
 * [任务六-报纸排版](#任务六-报纸排版)
 * [任务七-一个常见的技术产品官网](#任务七-一个常见的技术产品官网)
-* [任务八-响应式网格（栅格化）](#任务八-响应式网格)
+* [任务八-响应式网格（栅格化）](#任务八-响应式网格-栅格化)
 * [任务九-报表查询页面](#任务九-报表查询页面)
 * [任务十-flex弹性布局](#任务十-flex弹性布局)
-## 任务三-三栏式布局
-[代码预览1](https://davidlin88.github.io/IFE/任务三-三栏式布局-float.html)
-[代码预览2](https://davidlin88.github.io/IFE/任务三-三栏式布局-position.html)
+## 任务三-定位和居中
+[代码预览1](https://davidlin88.github.io/IFE/任务三-定位和居中-float.html)
+[代码预览2](https://davidlin88.github.io/IFE/任务三-定位和居中-position.html)
 * 代码预览1中，使用`float`浮动时，左右块的html代码要写在中间块（未浮动）的后面；
 * 代码预览1中，使用`float`浮动时，用h3做左块标题时发现，定位出现问题，疑似h标签带有默认边距，会破坏构想的布局，遂换成span标签，**（暂时不知道原因，待补充）**；
 * 代码预览2用`positon:absolute`定位时，其父容器要加`position:relative`，否则会以根元素进行定位；
 * 容器内元素超出容器大小时，可用对容器添加`overflow:auto`，让容器根据内容扩张；
-## 任务四-定位和居中
-[代码预览1](https://davidlin88.github.io/IFE/任务四-定位和居中-float.html)
-[代码预览2](https://davidlin88.github.io/IFE/任务四-定位和居中-position.html)
+## 任务四-三栏式布局
+[代码预览1](https://davidlin88.github.io/IFE/任务四-三栏式布局-float.html)
+[代码预览2](https://davidlin88.github.io/IFE/任务四-三栏式布局-position.html)
 * 代码预览1中，对黄色块用`float`浮动中，使用了
 ```
 margin: auto;
@@ -140,7 +140,7 @@ button:focus{
 * 添加指针在按钮和超链接等悬浮时的动画
 * 添加下拉菜单的样式
 * 等等
-## 任务八-响应式网格
+## 任务八-响应式网格-栅格化
 [代码预览](https://davidlin88.github.io/IFE/任务八-响应式网格-栅格化.html)
 * 此响应式网格实现原理：css3的media queries（媒体查询），即判断设备，引用不同的css代码;
 除此任务的引用方法，还可借此引用不同的css文件，如`<link rel="stylesheet" type="text/css" href="example.css" 
@@ -197,3 +197,8 @@ button:focus{
 [flex实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
 * `@media`媒体查询里`max-width`和`min-width`都包含那个值本身
 * `flex-wrap: wrap;`换行后，交叉轴的定位要用`align-content`而不是`align-items`
+## 任务十一-移动web页面布局
+[代码预览](https://davidlin88.github.io/IFE/任务十一-移动web页面布局.html)
+* 此任务实现响应式原理：用媒体查询,设备屏幕较大时，即`min-width = 401px`时，给`html`一个`font-size=625%`;设备屏幕较小时，即`max-width=400px`，`font-size=312.5%`，css部分的长度和字体大小单位除边框等少数元素外全部转化为rem，以实现在小屏幕上较好的阅读体验。设`font-size=625%`的原因是测试用的chrome浏览器支持的最小汉字字体是12px因此不能设`font-size=62.5%`
+* 边写总结边测试的时候发现的：`flex:1`失效时，给元素加上任意宽度即可，结合知乎上的一个解释，我的理解是是`flex:1`中的`flex-flow:1`，指定的是除已被占的空间外，剩余空间的分配比，即使2元素设了`flex:1`，他们本身的宽度若不等，多出的剩余空间即使按1:1分配给他们，他们所占的空间也不会相等
+* 设置`width`的方法可以解决页面最底部三只小熊即使设了`flex:1`后，扔会超出容器大小的问题，另：`img`外没有`div`包裹时，默认情况下改变宽度，高度不会变化，图片会变形，解决方法：设置`height:100%`，或用`div`包裹
