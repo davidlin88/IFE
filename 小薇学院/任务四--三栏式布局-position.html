@@ -10,12 +10,10 @@
 		margin: 20px;
 		background-color: #eee;
 		border: solid 1px #999;
-		overflow: auto;
+		position: relative;
 	}
 	div.name{
-		float: left;
-		top: 20px;
-		left: 20px;
+		position: absolute;
 		width: 200px;
 		border: 1px solid #999;
 		background-color: #fff;
@@ -26,25 +24,26 @@
 		margin: 20px;
 		border: 1px solid #999;
 	}
-	div.name h3{
-		float: right;
-		margin-right: 20px;
-		margin-top: 20px;
-		font-weight: bolder;
+	.name h3{
+		position: absolute;
+		top: 20px;
+		right: 20px;
 	}
-	div.intro{
-		margin: 0 140px 20px 220px;
+	.intro{
+		margin: 0 140px 20px 240px;
 		border: 1px solid #999;
 		background-color: #fff;
 	}
-	div.member{
-		float: right;
+	.member{
+		position: absolute;
+		top: 20px;
+		right: 20px;
 		width: 100px;
 		padding: 10px;
 		border: 1px solid #999;
 		background-color: #fff;
 	}
-	div.member img{
+	.member img{
 		margin: 10px;
 	}
 </style>
@@ -52,14 +51,8 @@
 <body>
 	<main>
 		<div class="name">
-			<img src="img/team.jpg">
+			<img src="img/task4/team.jpg">
 			<h3>超光速</h3>
-		</div class="name">
-		<div class="member">
-			<img src="img/member.jpg">
-			<img src="img/member.jpg">
-			<img src="img/member.jpg">
-			<img src="img/member.jpg">
 		</div>
 		<div class="intro">
 			<p>网页布局：又称版式布局，是网页UI设计师将有限的视觉元素进行有机的排列组合，将理性的思维个性化的表现出来，是一种具有个人艺术特色的视觉传达方式。传达信息的同时有美感。</p>
@@ -115,7 +108,19 @@
 			绝对定位（Absolute positioning）</p>
 			<br/>
 
-
+			<p>标准文档流的特点：从上到下，从左到右输出文档内容
+				由块级元素和行级元素组成
+				块级元素特点：从左到右撑满页面，独占一行
+				触碰到页面的边缘时会自动换行
+				行级元素特点：能在同一行内显示
+				不会改变HTML文档结构
+			常见行级标签：span、strong、img、input</p>
+		</div>
+		<div class="member">
+			<img src="img/task4/member.jpg">
+			<img src="img/task4/member.jpg">
+			<img src="img/task4/member.jpg">
+			<img src="img/task4/member.jpg">
 		</div>
 	</main>
 </body>
