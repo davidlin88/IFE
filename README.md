@@ -2,6 +2,7 @@
 此篇写一些做任务中的笔记，欢迎交流指正~~
 
 点击跳转：
+# 小薇学院(html+css)
 * [任务三-定位和居中](#任务三-定位和居中)
 * [任务四-三栏式布局](#任务四-三栏式布局)
 * [任务五-简单排版](#任务五-简单排版)
@@ -11,6 +12,10 @@
 * [任务九-报表查询页面](#任务九-报表查询页面)
 * [任务十-flex弹性布局](#任务十-flex弹性布局)
 * [任务十二-css3新特性](#任务十二-css3新特性)
+# 斌斌学院(javaScript)
+* [任务一-单个表单项的检验](#任务一-单个表单项的检验)
+* [任务二-排序](#任务二-排序)
+# 小薇学院(html+css)
 ## 任务三-定位和居中
 [代码预览1](https://davidlin88.github.io/IFE/小薇学院/任务三-定位和居中-float.html)
 [代码预览2](https://davidlin88.github.io/IFE/小薇学院/任务三-定位和居中-position.html)
@@ -208,3 +213,32 @@ button:focus{
 * 很实用的css选择器：`ul li:nth(-n+3){...}`，表示选择`ul`下第三个及第三个之前的`li`元素；n为正则表示选择之后的
 * `transition:width 1s;`表示执行`width`属性的过渡动画，时间为1s，`width`也可为`all`，可配合`:hover`、`:target`等伪类使用
 * 一个纯css轮播图，原理是利用锚点和`slide-content:target{...}`配合`animation`及`@keyframes`使用，轮播效果的实现是利用`div`块的`left`或`right`属性由-100%、0、100%间的变化构成的动画达到的，注意元素的初始位置应在左侧，关于这个，我在segmentfault上有个[提问](https://segmentfault.com/q/1010000012164644?_ea=2899131)。
+# 斌斌学院(javaScript)
+## 任务一-单个表单项的检验
+[代码预览](https://davidlin88.github.io/IFE/斌斌学院/任务一-单个表单项的检验.html)
+## 任务二-排序
+[代码预览](https://davidlin88.github.io/IFE/斌斌学院/任务二-排序.html)
+* `ArrayObject.sort(func)`：数组的排序，括号内为比较函数：
+```
+ArrayObject.sort(function(a,b){
+  if (a < b) {
+    return -1;
+  }else if(a = b){
+    return 0;
+  }else if (a > b) {
+    return 1;
+  }
+});
+```
+以上为升序排列，可简写为：
+```
+  ArrayObject.sort(function(a,b){
+    return a - b;
+  });
+```
+降序排列可简写为：
+```
+  ArrayObject.sort(function(a,b){
+    return b - a;
+  });
+```
