@@ -12,15 +12,15 @@
 * [任务十-flex弹性布局](#任务十-flex弹性布局)
 * [任务十二-css3新特性](#任务十二-css3新特性)
 ## 任务三-定位和居中
-[代码预览1](https://davidlin88.github.io/IFE/任务三-定位和居中-float.html)
-[代码预览2](https://davidlin88.github.io/IFE/任务三-定位和居中-position.html)
+[代码预览1](https://davidlin88.github.io/IFE/小薇学院/任务三-定位和居中-float.html)
+[代码预览2](https://davidlin88.github.io/IFE/小薇学院/任务三-定位和居中-position.html)
 * 代码预览1中，使用`float`浮动时，左右块的html代码要写在中间块（未浮动）的后面；
 * 代码预览1中，使用`float`浮动时，用h3做左块标题时发现，定位出现问题，疑似h标签带有默认边距，会破坏构想的布局，遂换成span标签，**（暂时不知道原因，待补充）**；
 * 代码预览2用`positon:absolute`定位时，其父容器要加`position:relative`，否则会以根元素进行定位；
 * 容器内元素超出容器大小时，可用对容器添加`overflow:auto`，让容器根据内容扩张；
 ## 任务四-三栏式布局
-[代码预览1](https://davidlin88.github.io/IFE/任务四-三栏式布局-float.html)
-[代码预览2](https://davidlin88.github.io/IFE/任务四-三栏式布局-position.html)
+[代码预览1](https://davidlin88.github.io/IFE/小薇学院/任务四-三栏式布局-float.html)
+[代码预览2](https://davidlin88.github.io/IFE/小薇学院/任务四-三栏式布局-position.html)
 * 代码预览1中，对黄色块用`float`浮动中，使用了
 ```
 margin: auto;
@@ -37,7 +37,7 @@ top: 0;right: 0;bottom: 0;left: 0;
  ```
   进行定位，原理是用`margin: 0 auto`让div水平居中，再用`top: 50%;`让`div`下移父元素50%高度，最后`transform: translateY(-50%);`往上移回div高度的50%，注意，这里要**对`body`和`html`标签添加`height=100%`，否则他两的高度会以`div`的高度为准撑开，无法占满屏幕**;
 ## 任务五-简单排版
-[代码预览](https://davidlin88.github.io/IFE/任务五-简单排版.html)
+[代码预览](https://davidlin88.github.io/IFE/小薇学院/任务五-简单排版.html)
 * `header`左侧的logo素材上下空白留底过多，此处使用`margin:-19px`将logo移到合适的位置
 * 链接居右通过对`header`增加`text-align:right`属性实现，同时让内容撑开`header`容器
 * 去除列表的样式（ol的圆点）：`list-style:none`
@@ -68,7 +68,7 @@ top: 0;right: 0;bottom: 0;left: 0;
 }
 ```
 ## 任务六-报纸排版
-[代码预览](https://davidlin88.github.io/IFE/任务六-报纸排版.html)
+[代码预览](https://davidlin88.github.io/IFE/小薇学院/任务六-报纸排版.html)
 * 网页头部左侧块，写一半的时候文字是在红色块居上的，第一反应是想用`veitical-align:bottom`，但并没有效果。我的理解是veitical-align是用在元素在文档流中的垂直方向的对齐定位，而此处左侧文字就是全部的文档流（右侧被浮动了），所以无效~]<br>
 另外，`vertical-align`可用于单选复选框与文字的对齐等，了解更多请点击：<br>
 [vertical-align与line-height的基友关系](http://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/)<br>
@@ -77,7 +77,7 @@ top: 0;right: 0;bottom: 0;left: 0;
 * 在写`.what :nth-child(2)`的时候偶然发现，`.what`和`:nth-child`中间有无空格完全不一样，测试后得出：<br>有空格时，即`.what :nth-child(2)`，表示选择`class = what`元素下的第二个子元素；<br>无空格时，即`.what:nth-child(2)`表示选择`class = what`元素的父元素下的第二个子元素，使用时要注意区别；
 * 伪元素选择器-首字符，即`::first-letter`对英文，选到的是第一个字母而非单词；对中文，选到的是第一个汉字，但其仍占一行的空间；
 ## 任务七-一个常见的技术产品官网
-[代码预览](https://davidlin88.github.io/IFE/任务七-常见的技术产品官网.html)
+[代码预览](https://davidlin88.github.io/IFE/小薇学院/任务七-常见的技术产品官网.html)
 * 这个网页我采用了大量样式分离的css命名方法，好处是提高了样式复用性，精简了css代码，弊端是html增多；
 * 去除button等点击后出现的蓝色边框：
 ```
@@ -142,7 +142,7 @@ button:focus{
 * 添加下拉菜单的样式
 * 等等
 ## 任务八-响应式网格-栅格化
-[代码预览](https://davidlin88.github.io/IFE/任务八-响应式网格-栅格化.html)
+[代码预览](https://davidlin88.github.io/IFE/小薇学院/任务八-响应式网格-栅格化.html)
 * 此响应式网格实现原理：css3的media queries（媒体查询），即判断设备，引用不同的css代码;
 除此任务的引用方法，还可借此引用不同的css文件，如`<link rel="stylesheet" type="text/css" href="example.css" 
 	media="(max-width: 600px)">`
@@ -186,25 +186,25 @@ button:focus{
 }
 ```
 ## 任务九-报表查询页面
-[代码预览](https://davidlin88.github.io/IFE/任务九-报表查询页面.html)
+[代码预览](https://davidlin88.github.io/IFE/小薇学院/任务九-报表查询页面.html)
 * `box-shadow`使用`inset`属性时，x和y坐标都要加个负号才和原来阴影位置相同
 * 180度旋转元素（此处是上下页的按钮）：`transform:rotate(180deg);`
 * 单独的圆角：`border-radius:5px 5px 0 0;`顺序依次是左上、右上、右下、左下
 * 表格单元格间隙：`border-spacing: 3px;`
 * css顺序选择`:nth-child(n)`，倒序选择：`:nth-last-child(n)`，父元素的末位子元素：`:last-child`
 ## 任务十-flex弹性布局
-[代码预览](https://davidlin88.github.io/IFE/任务十-flex弹性布局.html)
+[代码预览](https://davidlin88.github.io/IFE/小薇学院/任务十-flex弹性布局.html)
 [flex语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 [flex实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
 * `@media`媒体查询里`max-width`和`min-width`都包含那个值本身
 * `flex-wrap: wrap;`换行后，交叉轴的定位要用`align-content`而不是`align-items`
 ## 任务十一-移动web页面布局
-[代码预览](https://davidlin88.github.io/IFE/任务十一-移动web页面布局.html)
+[代码预览](https://davidlin88.github.io/IFE/小薇学院/任务十一-移动web页面布局.html)
 * 此任务实现响应式原理：用媒体查询,设备屏幕较大时，即`min-width = 401px`时，给`html`一个`font-size=625%`;设备屏幕较小时，即`max-width=400px`，`font-size=312.5%`，css部分的长度和字体大小单位除边框等少数元素外全部转化为rem，以实现在小屏幕上较好的阅读体验。设`font-size=625%`的原因是测试用的chrome浏览器支持的最小汉字字体是12px因此不能设`font-size=62.5%`
 * 边写总结边测试的时候发现的：`flex:1`失效时，给元素加上任意宽度即可，结合知乎上的一个解释，我的理解是是`flex:1`中的`flex-flow:1`，指定的是除已被占的空间外，剩余空间的分配比，即使2元素设了`flex:1`，他们本身的宽度若不等，多出的剩余空间即使按1:1分配给他们，他们所占的空间也不会相等
 * 设置`width`的方法可以解决页面最底部三只小熊即使设了`flex:1`后，扔会超出容器大小的问题，另：`img`外没有`div`包裹时，默认情况下改变宽度，高度不会变化，图片会变形，解决方法：设置`height:100%`，或用`div`包裹
 ## 任务十二-css3新特性
-[代码预览](https://davidlin88.github.io/IFE/任务十二-css3新特性.html)
+[代码预览](https://davidlin88.github.io/IFE/小薇学院/任务十二-css3新特性.html)
 * 很实用的css选择器：`ul li:nth(-n+3){...}`，表示选择`ul`下第三个及第三个之前的`li`元素；n为正则表示选择之后的
 * `transition:width 1s;`表示执行`width`属性的过渡动画，时间为1s，`width`也可为`all`，可配合`:hover`、`:target`等伪类使用
 * 一个纯css轮播图，原理是利用锚点和`slide-content:target{...}`配合`animation`及`@keyframes`使用，轮播效果的实现是利用`div`块的`left`或`right`属性由-100%、0、100%间的变化构成的动画达到的，注意动画的起始位置需与元素本身的初始位置相同
