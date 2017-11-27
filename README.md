@@ -207,4 +207,4 @@ button:focus{
 [代码预览](https://davidlin88.github.io/IFE/小薇学院/任务十二-css3新特性.html)
 * 很实用的css选择器：`ul li:nth(-n+3){...}`，表示选择`ul`下第三个及第三个之前的`li`元素；n为正则表示选择之后的
 * `transition:width 1s;`表示执行`width`属性的过渡动画，时间为1s，`width`也可为`all`，可配合`:hover`、`:target`等伪类使用
-* 一个纯css轮播图，原理是利用锚点和`slide-content:target{...}`配合`animation`及`@keyframes`使用，轮播效果的实现是利用`div`块的`left`或`right`属性由-100%、0、100%间的变化构成的动画达到的，注意动画的起始位置需与元素本身的初始位置相同
+* 一个纯css轮播图，原理是利用锚点和`slide-content:target{...}`配合`animation`及`@keyframes`使用，轮播效果的实现是利用`div`块的`left`或`right`属性由-100%、0、100%间的变化构成的动画达到的，注意元素的初始位置应在左侧，关于这个，我在segmentfault上有个[提问](https://segmentfault.com/q/1010000012164644?_ea=2899131)。
