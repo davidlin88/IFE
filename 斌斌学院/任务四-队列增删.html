@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务四</title>
+	<style>
+	#boxes{
+		margin-top: 2px;
+	}
+	span{
+		float: left;
+		margin-right: 10px;
+		background-color: #f00;
+		color: #fff;
+		text-align: center;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+	<input type="text" id="input">
+	<button id="leftIn">左侧入</button>
+	<button id="rightIn">右侧入</button>
+	<button id="leftOut">左侧出</button>
+	<button id="rightOut">右侧出</button>
+	<div id="boxes">
+		<span>10</span>
+		<span>3</span>
+		<span>7</span>
+		<span>12</span>
+		<span>11</span>
+		<span>30</span>
+	</div>
+	<script>
+		window.onload = function(){
+
+			// 获取DOM对象
+			var input = document.getElementById('input');
+			var boxes = document.getElementById('boxes');
+			var leftIn = document.getElementById('leftIn');
+			var rightIn = document.getElementById('rightIn');
+			var leftOut = document.getElementById('leftOut');
+			var rightOut = document.getElementById('rightOut');
+
+			// 输入判断
+			function numJudge(value){
+				if (isNaN(value)) {
+					alert("请输入数字~");
+					return false;
+				} else if(value == ""){
+					alert("您倒是输点东西啊~")
+					return false;
+				}else return true;
+			}
+
+			// 左侧入
+			leftIn.onclick = function(){
+				var value = input.value;
+				var span = document.createElement('span');
+				if (!numJudge(value)) return;
+				span.innerHTML = value;
+				clickRemove(span);
+				boxes.insertBefore(span,boxes.children[0]);
+			}
+
+			// 右侧入
+			rightIn.onclick = function(){
+				var value = input.value;
+				var span = document.createElement('span');
+				if (!numJudge(value)) return;
+				span.innerHTML = value;
+				clickRemove(span);
+				boxes.appendChild(span);
+			}
+
+			// 左侧出
+			leftOut.onclick = function(){
+				alert("已删除：" + boxes.children[0].innerHTML);
+				boxes.removeChild(boxes.children[0]);
+			}
+
+			// 左侧出
+			rightOut.onclick = function(){
+				alert("已删除：" + boxes.lastElementChild.innerHTML);
+				boxes.removeChild(boxes.lastElementChild);
+			}
+
+			// 点击删除
+			var span = document.getElementsByTagName('span');
+			for (var i = 0; i < span.length; i++) {
+				span[i].onclick = function(){
+					alert("已删除：" + this.innerHTML);
+					boxes.removeChild(this);
+				}
+			}
+
+			// 新增元素绑定点击删除函数
+			function clickRemove(span){
+				span.onclick = function(){
+					alert("已删除：" + this.innerHTML);
+					boxes.removeChild(this);
+				}
+			}
+
+		}
+	</script>
+</body>
+</html>
