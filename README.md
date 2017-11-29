@@ -243,22 +243,29 @@ ArrayObject.sort(function(a,b){
 ```
 ## 任务三-重排序
 [代码预览](https://davidlin88.github.io/IFE/斌斌学院/任务三-重排序.html)
+* 截取字符串：`stringObject.slice(start,end)`，不包括`end`，`end`省略时截取至字符串末尾
+* 分割字符串：`stringObject.split(separator)`，以`separator`为分隔符分割字符串，返回数组
+* 数组增加元素：`arrayObject.push(newelement1,....)`
 ## 任务四-队列增删
 [代码预览](https://davidlin88.github.io/IFE/斌斌学院/任务四-队列增删.html)
 * 正常书写情况下`span`间会有间距，类似[任务七](#任务七-一个常见的技术产品官网)此处解决方法是`float:left`
 * 判断是否为非数字：`isNaN()`，以前记过，太久没写js忘了T T
 * 终止函数的方法：`return`，同时终止调用此函数的函数，让内部函数返回布尔值，外部函数做一个判断：
 ```
-			function numJudge(value){
-				if (isNaN(value)) {
-					alert("请输入数字~");
-					return false;
-				} else if(value == ""){
-					alert("您倒是输点东西啊~")
-					return false;
-				}else return true;
-			}
+function numJudge(value){
+	if (isNaN(value)) {
+		alert("请输入数字~");
+		return false;
+	} else if(value == ""){
+		alert("您倒是输点东西啊~")
+		return false;
+	}else return true;
+}
 ```
 ```
 if (!numJudge(value)) return;
 ```
+* `childNodes`与`children`区别：`childNodes`取的是所有节点，包括元素节点和文本节点；`children`只获取文本节点，操作DOM推荐`children`;`firstChild`、`lastChild`、`firstElementChild`、`firstElementChild`同理，推荐后两者。
+* 插入节点原理：前：`boxes.insertBefore(span,boxes.children[0])`；后：`boxes.appendChild(span)`
+* 删除节点原理：前：`boxes.removeChild(boxes.children[0])`；后：`boxes.removeChild(boxes.lastElementChild)`
+
