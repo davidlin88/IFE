@@ -1,7 +1,5 @@
 # 目录
 此篇写一些做任务中的笔记，欢迎交流指正~~
-
-点击跳转：
 # 小薇学院(html+css)
 * [任务三-定位和居中](#任务三-定位和居中)
 * [任务四-三栏式布局](#任务四-三栏式布局)
@@ -15,6 +13,7 @@
 # 斌斌学院(javaScript)
 * [任务一-单个表单项的检验](#任务一-单个表单项的检验)
 * [任务二-排序](#任务二-排序)
+* [任务四-队列增删](#任务四-队列增删)
 # 小薇学院(html+css)
 ## 任务三-定位和居中
 [代码预览1](https://davidlin88.github.io/IFE/小薇学院/任务三-定位和居中-float.html)
@@ -241,4 +240,25 @@ ArrayObject.sort(function(a,b){
   ArrayObject.sort(function(a,b){
     return b - a;
   });
+```
+## 任务三-重排序
+[代码预览](https://davidlin88.github.io/IFE/斌斌学院/任务三-重排序.html)
+## 任务四-队列增删
+[代码预览](https://davidlin88.github.io/IFE/斌斌学院/任务四-队列增删.html)
+* 正常书写情况下`span`间会有间距，类似[任务七](#任务七-一个常见的技术产品官网)此处解决方法是`float:left`
+* 判断是否为非数字：`isNaN()`，以前记过，太久没写js忘了T T
+* 终止函数的方法：`return`，同时终止调用此函数的函数，让内部函数返回布尔值，外部函数做一个判断：
+```
+			function numJudge(value){
+				if (isNaN(value)) {
+					alert("请输入数字~");
+					return false;
+				} else if(value == ""){
+					alert("您倒是输点东西啊~")
+					return false;
+				}else return true;
+			}
+```
+```
+if (!numJudge(value)) return;
 ```
