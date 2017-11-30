@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务四</title>
+	<style>
+	#boxes{
+		margin-top: 2px;
+	}
+	#boxes div{
+		float: left;
+		padding: 0 10px;
+		margin-right: 10px;
+		background-color: #f00;
+		color: #fff;
+		text-align: center;
+		height: 30px;
+		line-height: 30px;
+		cursor: pointer;
+	}
+	#boxes span{
+		background-color: yellowgreen;
+	}
+</style>
+</head>
+<body>
+	<textarea placeholder="请输入字符并用不同符号进行分割" id="input" cols="30" rows="10"></textarea>
+	<button id="leftIn">左侧入</button>
+	<button id="rightIn">右侧入</button>
+	<button id="leftOut">左侧出</button>
+	<button id="rightOut">右侧出</button>
+	<input type="text" id="inputSearch">
+	<button id="search">查询</button>
+
+	<div id="boxes">
+		<div>10</div>
+		<div>3</div>
+		<div>7</div>
+		<div>12</div>
+		<div>11</div>
+		<div>30</div>
+	</div>
+	<script>
+		window.onload = function(){
+			// 创建通过ID获取DOM对象的函数
+			function byID(id){
+				return typeof(id) === "string"?document.getElementById(id):id;
+			}
+
+			// 获取DOM对象
+			var input = byID("input");
+			var boxes = byID('boxes');
+			var leftIn = byID('leftIn');
+			var rightIn = byID('rightIn');
+			var leftOut = byID('leftOut');
+			var rightOut = byID('rightOut');
+			var inputSearch = byID('inputSearch');
+			var search = byID('search');
+
+			// 输入判断
+			function inputJudge(){
+				var value = input.value;
+				var position = new Array();
+				// ","检测
+				var pos = value.indexOf(',');
+				while(pos > -1){
+					position.push(pos);
+					pos = value.indexOf(',',pos + 1);
+				}
+				// ","检测
+				var pos = value.indexOf('，');
+				while(pos > -1){
+					position.push(pos);
+					pos = value.indexOf('，',pos + 1);
+				}
+				// " "检测
+				var pos = value.indexOf(' ');
+				while(pos > -1){
+					position.push(pos);
+					pos = value.indexOf(' ',pos + 1);
+				}
+				// "\n"检测
+				var pos = value.indexOf('\n');
+				while(pos > -1){
+					position.push(pos);
+					pos = value.indexOf('\n',pos + 1);
+				}
+				// 若没有分隔符，返回原输入内容
+				if (position == []) {
+					return output.push(value);
+				}
+				// 否则，以position分割输入字符串
+				var output = new Array();
+				position.unshift([0]);
+				for (var i = 0; i < position.length; i++) {
+					if (i == 0) {
+						output.push(value.slice(0,position[i + 1]));
+					}else {
+						output.push(value.slice(position[i] + 1,position[i + 1]));
+					}
+				}
+				return output;
+			}
+
+			// 左侧入
+			leftIn.onclick = function(){
+				var output = inputJudge();
+				for (var i = 0; i < output.length; i++) {
+					var box = document.createElement('div');
+					box.innerHTML = output[i];
+					clickRemove(box);
+					boxes.insertBefore(box,boxes.children[0]);
+				}
+			}
+
+			// 右侧入
+			rightIn.onclick = function(){
+				var output = inputJudge();
+				for (var i = 0; i < output.length; i++) {
+					var box = document.createElement('div');
+					box.innerHTML = output[i];
+					clickRemove(box);
+					boxes.appendChild(box);
+				}
+			}
+
+			// 左侧出
+			leftOut.onclick = function(){
+				alert("已删除：" + boxes.children[0].innerHTML);
+				boxes.removeChild(boxes.children[0]);
+			}
+
+			// 左侧出
+			rightOut.onclick = function(){
+				alert("已删除：" + boxes.lastElementChild.innerHTML);
+				boxes.removeChild(boxes.lastElementChild);
+			}
+
+			// 点击删除
+			var box = document.getElementsByTagName('div');
+			for (var i = 0; i < box.length; i++) {
+				box[i].onclick = function(){
+					alert("已删除：" + this.innerHTML);
+					boxes.removeChild(this);
+				}
+			}
+
+			// 新增元素绑定点击删除函数
+			function clickRemove(box){
+				box.onclick = function(){
+					alert("已删除：" + this.innerHTML);
+					boxes.removeChild(this);
+				}
+			}
+
+			// 查询标示功能
+			search.onclick = function(){
+				var keyWord = inputSearch.value;
+				console.log(keyWord);
+				boxes.innerHTML = boxes.innerHTML.replace(new RegExp(keyWord,'g'),"<span>"+keyWord+"</span>");
+			}
+
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务四</title>
+	<style>
+	#boxes{
+		margin-top: 2px;
+	}
+	span{
+		float: left;
+		margin: 2px;
+		background-color: #f00;
+		color: #fff;
+		text-align: center;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+	<input type="text" id="input">
+	<button id="leftIn">左侧入</button>
+	<button id="rightIn">右侧入</button>
+	<button id="leftOut">左侧出</button>
+	<button id="rightOut">右侧出</button>
+	<button id="sort">排序</button>
+	<div id="boxes">
+
+	</div>
+	<script>
+		window.onload = function(){
+
+			// 获取DOM对象
+			var input = document.getElementById('input');
+			var boxes = document.getElementById('boxes');
+			var leftIn = document.getElementById('leftIn');
+			var rightIn = document.getElementById('rightIn');
+			var leftOut = document.getElementById('leftOut');
+			var rightOut = document.getElementById('rightOut');
+			var sort = document.getElementById('sort');
+
+			// 输入判断
+			function numJudge(value){
+				if (isNaN(value)) {
+					alert("请输入数字~");
+					return false;
+				} else if(value == ""){
+					alert("您倒是输点东西啊~")
+					return false;
+				}else {
+					if(value < 10 || value > 100){
+						alert("请输入10~100间的数字")
+					}else if (boxes.children.length === 60) {
+						alert("最多60列哦~")
+					} return true;
+				};
+			}
+
+			//方块判断
+			function boxJudge(){
+				if(boxes.children[0] === undefined){
+					alert("删完啦~")
+					return true;
+				} else return false;
+			}
+
+			// 左侧入
+			leftIn.onclick = function(){
+				var value = input.value;
+				if (!numJudge(value)) return;
+				boxes.insertBefore(createBox(value),boxes.childNodes[0]);
+			}
+
+			// 右侧入
+			rightIn.onclick = function(){
+				var value = input.value;
+				if (!numJudge(value)) return;
+				boxes.appendChild(createBox(value));
+			}
+
+			// 左侧出
+			leftOut.onclick = function(){
+				if(boxJudge()) return;
+				boxes.removeChild(boxes.children[0]);
+			}
+
+			// 右侧出
+			rightOut.onclick = function(){
+				if(boxJudge()) return;
+				boxes.removeChild(boxes.lastElementChild);
+			}
+
+			// 冒泡排序
+			sort.onclick =function(){
+				var arr = boxes.children;
+				var len = arr.length;
+				for (var i = 0; i < len; i++) {
+					for (var j = 0; j < len - i - 1; j++) {
+						var h0 = arr[j].style.height;
+						var h1 = arr[j + 1].style.height;
+						if (h0 < h1) {
+							arr[j].style.height = h1;
+							arr[j + 1].style.height = h0;
+						}
+					}
+				}
+			}
+
+			// 创建一个给新增元素绑定点击删除功能的函数
+			function clickRemove(span){
+				span.onclick = function(){
+					boxes.removeChild(this);
+				}
+			}
+
+			// 创建一个产生方块的函数
+			function createBox(value){
+				var span = document.createElement('span');
+				span.setAttribute("style","height:"+value+"px");
+				clickRemove(span);
+				return span;
+			}
+
+		}
+	</script>
+</body>
+</html>
