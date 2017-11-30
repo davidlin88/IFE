@@ -269,4 +269,63 @@ if (!numJudge(value)) return;
 * `childNodes`与`children`区别：`childNodes`取的是所有节点，包括元素节点和文本节点；`children`只获取文本节点，操作DOM推荐`children`;`firstChild`、`lastChild`、`firstElementChild`、`firstElementChild`同理，推荐后两者。
 * 插入节点原理：前：`boxes.insertBefore(span,boxes.children[0])`；后：`boxes.appendChild(span)`
 * 删除节点原理：前：`boxes.removeChild(boxes.children[0])`；后：`boxes.removeChild(boxes.lastElementChild)`
-
+## 任务五-队列排序
+[代码预览](https://davidlin88.github.io/IFE/斌斌学院/任务五-队列排序.html)
+* 实现原理：冒泡排序。
+```
+sort.onclick =function(){
+	var arr = boxes.children;
+	var len = arr.length;
+	for (var i = 0; i < len; i++) {
+		for (var j = 0; j < len - i - 1; j++) {
+			var h0 = arr[j].style.height;
+			var h1 = arr[j + 1].style.height;
+			if (h0 < h1) {
+				arr[j].style.height = h1;
+				arr[j + 1].style.height = h0;
+			}
+		}
+	}
+}
+```
+## 任务六-查询
+[代码预览](https://davidlin88.github.io/IFE/斌斌学院/任务六-查询.html)
+* 分割符的检测原理：1.获取所有分割符位置；2.根据分割符位置截取字符串
+```
+var value = input.value;
+var position = new Array();
+// ","检测
+var pos = value.indexOf(',');
+while(pos > -1){
+	position.push(pos);
+	pos = value.indexOf(',',pos + 1);
+}
+```
+```
+// 若没有分隔符，返回原输入内容
+if (position == []) {
+	return output.push(value);
+}
+// 否则，以position分割输入字符串
+var output = new Array();
+position.unshift([0]);
+for (var i = 0; i < position.length; i++) {
+	if (i == 0) {
+		output.push(value.slice(0,position[i + 1]));
+	}else {
+		output.push(value.slice(position[i] + 1,position[i + 1]));
+	}
+}
+return output;
+```
+* 查询标识原理：`replace()`搜索关键字为`'<span>'+keyWord+'</span>'`
+* `replace()`单纯替换字符串或表达式只能替换第一个，全部替换需用到正则表达式：<br/>
+字符串的全部替换：`replace(/oldString/g,"newString")`；<br/>表达式的全部替换：`replace(new RegExp(expression,'g'),newString)`
+```
+// 查询标示功能
+search.onclick = function(){
+	var keyWord = inputSearch.value;
+	console.log(keyWord);
+	boxes.innerHTML = boxes.innerHTML.replace(new RegExp(keyWord,'g'),"<span>"+keyWord+"</span>");
+}
+```
