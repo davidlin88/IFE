@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>任务四</title>
+	<title>任务六</title>
 	<style>
 	#boxes{
 		margin-top: 2px;
@@ -74,10 +74,10 @@
 					pos = value.indexOf('，',pos + 1);
 				}
 				// " "检测
-				var pos = value.indexOf(' ');
+				var pos = value.indexOf(" ");
 				while(pos > -1){
 					position.push(pos);
-					pos = value.indexOf(' ',pos + 1);
+					pos = value.indexOf(" ",pos + 1);
 				}
 				// "\n"检测
 				var pos = value.indexOf('\n');
@@ -99,11 +99,28 @@
 						output.push(value.slice(position[i] + 1,position[i + 1]));
 					}
 				}
+				// 去除连续分割符
+				for (var i = 0; i < output.length; i++) {
+					if(output[i] == ""){
+						output.splice(i,1);
+						i = i - 1;
+					}
+				}
 				return output;
+			}
+
+			// 输入为空判断
+			function emptyJudge(){
+				if (input.value == "") {
+					return true;
+				}
 			}
 
 			// 左侧入
 			leftIn.onclick = function(){
+				if(emptyJudge()){
+					return;
+				}
 				var output = inputJudge();
 				for (var i = 0; i < output.length; i++) {
 					var box = document.createElement('div');
@@ -115,6 +132,9 @@
 
 			// 右侧入
 			rightIn.onclick = function(){
+				if(emptyJudge()){
+					return;
+				}
 				var output = inputJudge();
 				for (var i = 0; i < output.length; i++) {
 					var box = document.createElement('div');
@@ -137,7 +157,8 @@
 			}
 
 			// 点击删除
-			var box = document.getElementsByTagName('div');
+			var box = boxes.getElementsByTagName('div');
+			console.log(box);
 			for (var i = 0; i < box.length; i++) {
 				box[i].onclick = function(){
 					alert("已删除：" + this.innerHTML);
@@ -156,7 +177,10 @@
 			// 查询标示功能
 			search.onclick = function(){
 				var keyWord = inputSearch.value;
-				console.log(keyWord);
+				if (keyWord == "") {
+					alert("请输入字符！");
+					return;
+				}
 				boxes.innerHTML = boxes.innerHTML.replace(new RegExp(keyWord,'g'),"<span>"+keyWord+"</span>");
 			}
 
