@@ -15,6 +15,8 @@
 * [任务二-排序](#任务二-排序)
 * [任务三-重排序](#任务三-重排序)
 * [任务四-队列增删](#任务四-队列增删)
+* [任务五-队列排序](#任务五-队列排序)
+* [任务六-查询](#任务六-查询)
 # 小薇学院(html+css)
 ## 任务三-定位和居中
 [代码预览1](https://davidlin88.github.io/IFE/小薇学院/任务三-定位和居中-float.html)
@@ -327,5 +329,14 @@ search.onclick = function(){
 	var keyWord = inputSearch.value;
 	console.log(keyWord);
 	boxes.innerHTML = boxes.innerHTML.replace(new RegExp(keyWord,'g'),"<span>"+keyWord+"</span>");
+}
+```
+* 测试发现BUG：1.不输入点击入按钮也会产生方块，解决方法：添加输入为空判断；2.连续输入多个分割符会产生空内容的方块，解决方法：对`output`进行遍历筛选，删除其中的空元素
+```
+for (var i = 0; i < output.length; i++) {
+	if(output[i] == ""){
+		output.splice(i,1);
+		i = i - 1;
+	}
 }
 ```
