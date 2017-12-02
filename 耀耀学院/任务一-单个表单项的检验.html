@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务一</title>
+	<style>
+	body{
+		font-family: "微软雅黑";
+		font-size: 30px;
+	}
+	input{
+		width: 540px;
+		height: 70px;
+		border: 2px solid rgb(203,203,203);
+		border-radius: 7px;
+		box-shadow: 0 1px 3px #ccc inset;
+		font-size: 30px;
+		padding: 5px;
+	}
+	button{
+		width: 110px;
+		height: 70px;
+		background-color: rgb(48,121,185);
+		border-radius: 7px;
+		border:1px solid rgb(41,108,167);
+		color:white;
+		font-size: 30px;
+	}
+	#msg{
+		font-size: 25px;
+		color: #ccc;
+	}
+</style>
+</head>
+<body>
+	<table action="">
+		<tr>
+			<td>
+				<label for="">名称</label>
+			</td>
+			<td>
+				<input type="text" id="input">
+			</td>
+			<td>
+				<button id="test">验证</button>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<div id="msg">必填，长度为4~16个字符</div>
+			</td>
+		</tr>
+	</table>
+
+	<script>
+		window.onload = function(){
+			var input = document.getElementById('input');
+			var test = document.getElementById('test');
+			var msg = document.getElementById('msg');
+
+			// 给按钮绑定验证函数
+			test.onclick = function(){
+				var str = input.value;
+				var len = 0;
+				for (var i = 0; i < str.length; i++) {
+					if(str.charCodeAt(i) < 256){
+						len++;
+					} else {
+						len += 2;
+					}
+				}
+				if (len === 0) {
+					msg.innerHTML = "姓名不能为空";
+					msg.style.color = "red";
+					input.style.border = "2px red solid";
+				} else if ((len < 4) || (len > 16)) {
+					msg.innerHTML = "长度应为4~16字符";
+					msg.style.color = "red";
+					input.style.border = "2px red solid";
+				} else {
+					msg.innerHTML = "名称格式正确";
+					msg.style.color = "green";
+					input.style.border = "2px green solid";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

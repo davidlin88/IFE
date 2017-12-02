@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务二</title>
+	<style>
+	body{
+		font-family: "微软雅黑";
+		font-size: 20px;
+	}
+	.container{
+		margin: 0 auto;
+		width: 730px;
+		padding-top: 100px;
+	}
+	.item{
+		margin-bottom: 12px;
+
+	}
+	label{
+		width: 160px;
+		text-align: right;
+		display: inline-block;
+		margin-right: 5px;
+	}
+	input{
+		width: 540px;
+		height: 20px;
+		border: 2px solid rgb(203,203,203);
+		border-radius: 7px;
+		box-shadow: 0 1px 3px #ccc inset;
+		font-size: 20px;
+		padding: 5px;
+	}
+	button{
+		height: 30px;
+		width: 70px;
+		float: right;
+		margin-right: 6px;
+		background-color: rgb(48,121,185);
+		border-radius: 7px;
+		border:1px solid rgb(41,108,167);
+		color:white;
+		font-size: 20px;
+	}
+	.msg{
+		font-size: 16px;
+		color: #ccc;
+		margin-left: 170px;
+		display: none;
+	}
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="item">
+			<label for="">名称</label>
+			<input type="text" id="name">
+			<div id="msgName" class="msg">必填，长度为4~16个字符</div>
+		</div>
+
+		<div class="item">
+			<label for="">密码</label>
+			<input type="password" id="pw">
+			<div id="msgPw" class="msg">请输入密码</div>
+		</div>
+
+		<div class="item">
+			<label for="">密码确认</label>
+			<input type="password" id="pwAgain">
+			<div id="msgPwAgain" class="msg">再次输入相同密码</div>
+		</div>
+
+		<div class="item">
+			<label for="">邮箱</label>
+			<input type="text" id="email">
+			<div id="msgEmail" class="msg">请输入邮箱</div>
+		</div>
+
+		<div class="item">
+			<label for="">手机</label>
+			<input type="text" id="tel">
+			<div id="msgTel" class="msg">请输入11位手机号</div>
+		</div>
+
+		<button id="submit">提交</button>
+	</div>
+
+
+	<script>
+		window.onload = function(){
+			function byID(id){
+				return typeof(id) === "string"?document.getElementById(id):id;
+			}
+			var name = byID('name');
+			var pw = byID('pw');
+			var pwAgain = byID('pwAgain');
+			var email = byID('email');
+			var tel = byID('tel');
+			var msgName = byID('msgName');
+			var msgPw = byID('msgPw');
+			var msgPwAgain = byID('msgPwAgain');
+			var msgEmail = byID('msgEmail');
+			var msgTel = byID('msgTel');
+
+			// 名称 获得焦点事件
+			name.onfocus = function(){
+				msgName.style.display = "block";
+			}
+
+			// 密码 获得焦点事件
+			pw.onfocus = function(){
+				msgPw.style.display = "block";
+			}
+			// 重复密码 获得焦点事件
+			pwAgain.onfocus = function(){
+				msgPwAgain.style.display = "block";
+			}
+
+			// 邮箱 获得焦点事件
+			email.onfocus = function(){
+				msgEmail.style.display = "block";
+			}
+
+			// 手机 获得焦点事件
+			tel.onfocus = function(){
+				msgTel.style.display = "block";
+			}
+
+
+
+			// 名称 失去焦点 验证
+			name.onblur = function(){
+				var str = name.value;
+				var len = 0;
+				for (var i = 0; i < str.length; i++) {
+					if(str.charCodeAt(i) < 256){
+						len++;
+					} else {
+						len += 2;
+					}
+				}
+				if (len === 0) {
+					msgName.innerHTML = "姓名不能为空";
+					msgName.style.color = "red";
+					name.style.border = "2px red solid";
+					return false;
+				} else if ((len < 4) || (len > 16)) {
+					msgName.innerHTML = "长度应为4~16字符";
+					msgName.style.color = "red";
+					name.style.border = "2px red solid";
+					return false;
+				} else {
+					msgName.innerHTML = "名称格式正确";
+					msgName.style.color = "rgb(100,186,71)";
+					name.style.border = "2px rgb(100,186,71) solid";
+					return true;
+				}
+			}
+
+			// 密码 失去焦点 验证
+			pw.onblur = function(){
+				var str = pw.value;
+				var len = 0;
+				for (var i = 0; i < str.length; i++) {
+					if(str.charCodeAt(i) < 256){
+						len++;
+					} else {
+						len += 2;
+					}
+				}
+				if (len === 0) {
+					msgPw.innerHTML = "密码不能为空";
+					msgPw.style.color = "red";
+					pw.style.border = "2px red solid";
+					return false;
+				} else if ((len < 6) || (len > 16)) {
+					msgPw.innerHTML = "密码长度应为6~16字符";
+					msgPw.style.color = "red";
+					pw.style.border = "2px red solid";
+					return false;
+				} else {
+					msgPw.innerHTML = "密码可用";
+					msgPw.style.color = "rgb(100,186,71)";
+					pw.style.border = "2px rgb(100,186,71) solid";
+					return true;
+				}
+			}
+
+			// 重复密码 失去焦点 验证
+			pwAgain.onblur = function(){
+				var str = pwAgain.value;
+				var strPw = pw.value;
+				if (str.length === 0) {
+					msgPwAgain.innerHTML = "密码不能为空";
+					msgPwAgain.style.color = "red";
+					pwAgain.style.border = "2px red solid";
+					return false;
+				}else if (strPw === str) {
+					msgPwAgain.innerHTML = "密码可用";
+					msgPwAgain.style.color = "rgb(100,186,71)";
+					pwAgain.style.border = "2px rgb(100,186,71) solid";
+					return true;
+				} else {
+					msgPwAgain.innerHTML = "两次密码应相同";
+					msgPwAgain.style.color = "red";
+					pwAgain.style.border = "2px red solid";
+					return false;
+				}
+			}
+
+			// 邮箱 失去焦点 验证
+			email.onblur = function(){
+				var str = email.value;
+				var len = str.length;
+				// 邮箱检测的正则表达式
+				var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+				var result = pattern.test(str);
+				if (len === 0) {
+					msgEmail.innerHTML = "邮箱不能为空";
+					msgEmail.style.color = "red";
+					email.style.border = "2px red solid";
+					return false;
+				}else if (result) {
+					msgEmail.innerHTML = "邮箱合法";
+					msgEmail.style.color = "rgb(100,186,71)";
+					email.style.border = "2px rgb(100,186,71) solid";
+					return true;
+				} else {
+					msgEmail.innerHTML = "邮箱不合法";
+					msgEmail.style.color = "red";
+					email.style.border = "2px red solid";
+					return false;
+				}
+			}
+
+			// 手机 失去焦点 验证
+			tel.onblur = function(){
+				var str = tel.value;
+				var len = str.length;
+				// 手机号检测的正则表达式
+				var pattern = /^1[34578]\d{9}$/;
+				var result = pattern.test(str);
+				if (len === 0) {
+					msgTel.innerHTML = "手机号不能为空";
+					msgTel.style.color = "red";
+					tel.style.border = "2px red solid";
+					return false;
+				}else if (result) {
+					msgTel.innerHTML = "手机号合法";
+					msgTel.style.color = "rgb(100,186,71)";
+					tel.style.border = "2px rgb(100,186,71) solid";
+					return true;
+				} else {
+					msgTel.innerHTML = "手机号不合法";
+					msgTel.style.color = "red";
+					tel.style.border = "2px red solid";
+					return false;
+				}
+			}
+
+			// 提交按钮 全局验证
+			submit.onclick = function(){
+				var result;
+				if (name.onblur() && pw.onblur() && pwAgain.onblur() && email.onblur() && tel.onblur()) {
+					result = "提交成功~";
+				} else {
+					result = "提交失败！";
+				}
+				alert(result);
+			}
+		}
+	</script>
+</body>
+</html>
