@@ -215,7 +215,7 @@
 				var str = email.value;
 				var len = str.length;
 				// 邮箱检测的正则表达式
-				var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+				var pattern = /^([a-zA-Z0-9]+[_\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 				var result = pattern.test(str);
 				if (len === 0) {
 					msgEmail.innerHTML = "邮箱不能为空";
