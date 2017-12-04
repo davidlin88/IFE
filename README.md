@@ -362,3 +362,18 @@ var result = pattern.test(str);
 `+`表示一个或多个<br/>
 了解更多关于正则表达式的[语法](https://www.cnblogs.com/ldq2016/p/5528177.html)<br/>
 一个形象的正则表达式转换为图形的网站：[Regexper](https://regexper.com/)
+## 任务三-表单联动
+[代码预览](https://davidlin88.github.io/IFE/耀耀学院/任务三-表单联动.html)
+* 联动原理：给单选框绑定`onclick`事件；子菜单的数据存储在一个对象或多维数组中，给下拉菜单绑定`onchange`事件，根据`selectObject.selectedIndex`匹配对应数据，创建并放入元素节点中
+```
+// select变动时，改变menu内HTML文本
+menu.onchange = function(){
+	var str = "";
+	var arr = schoolData[menu.selectedIndex];
+	console.log(arr);
+	for (var i = 0; i < arr.length; i++) {
+		str+="<option>"+arr[i]+"</option>";
+	}
+	subMenu.innerHTML = str;
+}
+```
