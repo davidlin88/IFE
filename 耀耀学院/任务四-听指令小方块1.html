@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务四</title>
+	<style>
+	*{
+		box-sizing: border-box;
+	}
+	body{
+		text-align: center;
+	}
+	table{
+		margin: 0 auto;
+		border-collapse: collapse;
+		position: relative;
+	}
+	tr:nth-child(1) td{
+		border:none;
+	}
+	tr td:nth-child(1){
+		border:none;
+	}
+	td{
+		width: 50px;
+		height: 50px;
+		border:1px solid #ccc;
+		text-align: center;
+	}
+	ul{
+		list-style: none;
+	}
+	#box{
+		position: absolute;
+		top: 400px;
+		left: 400px;
+		width: 50px;
+		height: 50px;
+	}
+	.blue{
+		background-color: #00f;
+		height: 30%;
+	}
+	.red{
+		background-color: #f00;
+		height: 70%
+	}
+</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<td></td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<div id="box">
+					<div class="blue"></div>
+					<div class="red"></div>
+				</div>
+			</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<br>
+		<input id="input" type="text">
+		<button id="run">run</button>
+		<br><br>
+		<button id="go">起步走</button>
+		<button id="turnLeft">向左转</button>
+		<button id="turnRight">向右转</button>
+		<button id="turnBack">向后转</button>
+	<ul>
+		<li>GO：向蓝色边所面向的方向前进一格（一格等同于正方形的边长）</li>
+		<li>TURN LEFT：向左转（逆时针旋转90度）</li>
+		<li>TURN RIGHT：向右转（顺时针旋转90度）</li>
+		<li>TURN BACK：向右转（旋转180度）</li>
+	</ul>
+	<script src="js/task4.js"></script>
+</body>
+</html>
