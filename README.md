@@ -377,3 +377,7 @@ menu.onchange = function(){
 	subMenu.innerHTML = str;
 }
 ```
+## 任务四-听指令的小方块1
+[代码预览](https://davidlin88.github.io/IFE/耀耀学院/任务四-听指令的小方块1.html)
+* 小方块转向原理：1.此处的方法是定义一个全局变量`var face = 0`，单击转向按钮时，改变全局变量`face`的值，根据值的不同对方块设置相应`transform:rotate(xdeg)`的样式；2.其他方法：还可定义一个角度值，如`var deg = 0`，转向时，以90为最小步数改变`deg`的值，再将`deg`稍加修饰设置到方块的样式中去
+* 小方块移动原理：1.给方块设置`position:absolute`，定义`topValue`和`leftValue`，根据`face`的值，对应改变方块的位置值；2.其他方法：根据定义的`deg/90%4`结果的绝对值(获取绝对值方法：`Math.abs(-1)`)，对应改变方块的位置值
