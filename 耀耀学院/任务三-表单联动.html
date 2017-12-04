@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单联动</title>
+	<style>
+	#school,#company{
+		margin: 10px;
+	}
+	#company{
+		display: none;
+	}
+	label{
+		margin-right: 5px;
+	}
+</style>
+</head>
+<body>
+	<form action="">
+		<label><input name="school" 
+			type="radio" id="inSchool" value="in-school" checked>在校生</label>
+		<label><input name="school" 
+			type="radio" id="notInSchool" value="not-in-school">非在校生</label>
+		<div id="school">
+			<label for="">学校</label>
+			<select id="menu">
+				<option value="0">请选择所在省市</option>
+				<option value="zj">浙江</option>
+				<option value="sh">高老庄</option>
+			</select>
+			<select id="subMenu">
+				<option value="">请选择所在学校</option>
+			</select>
+		</div>
+		<div id="company">
+			<label for="">就业单位</label>
+			<input type="text">
+		</div>
+		
+	</form>
+	<script>
+		window.onload = function(){
+			// 获取DOM元素
+			function $(id){
+				return document.getElementById(id);
+			}
+			var inSchool = $('inSchool');
+			var notInSchool = $('notInSchool');
+			var school = $('school');
+			var menu = $('menu');
+			var subMenu = $('subMenu');
+			var school = $('school');
+			var company = $('company');
+
+			// 创建各省市学校信息
+			var schoolData = [
+				["请选择所在学校"],
+				["浙江水利水电学院","浙江大学","浙江理工大学"],
+				["高老庄早点学院","高老庄农业大学","高老庄城市学院"]
+			];
+
+			// 点击单选框 切换tab
+			inSchool.onclick = function(){
+				school.style.display = "block";
+				company.style.display = "none";
+			}
+			notInSchool.onclick = function(){
+				school.style.display = "none";
+				company.style.display = "block";
+			}
+
+			// select变动时，改变menu内HTML文本
+			menu.onchange = function(){
+				var str = "";
+				var arr = schoolData[menu.selectedIndex];
+				console.log(arr);
+				for (var i = 0; i < arr.length; i++) {
+					str+="<option>"+arr[i]+"</option>";
+				}
+				subMenu.innerHTML = str;
+			}
+		}
+	</script>
+</body>
+</html>
