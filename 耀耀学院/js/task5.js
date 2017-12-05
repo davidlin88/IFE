@@ -6,7 +6,15 @@ run = $('run'),
 go = $('go'),
 turnLeft = $('turnLeft'),
 turnRight = $('turnRight'),
-turnBack = $('turnBack');
+turnBack = $('turnBack'),
+traTop = $('traTop'),
+traRight = $('traRight'),
+traBottom = $('traBottom'),
+traLeft = $('traLeft'),
+movTop = $('movTop'),
+movRight = $('movRight'),
+movBottom= $('movBottom'),
+movLeft = $('movLeft');
 
 // 给run按钮绑定指令对应事件函数
 run.onclick = function(){
@@ -18,40 +26,119 @@ run.onclick = function(){
 		break;
 
 		case('TURN LEFT'):
-		TURNLEFT();
+		turnLeft.click();
 		break;
 
 		case('TURN RIGHT'):
-		TURNRIGTH();
+		turnRight.click();
 		break;
 
 		case('TURN BACK'):
-		TURNBACK();
+		turnBottom.click();
+		break;
+
+		case('TRA TOP'):
+		traTop.click();
+		break;
+
+		case('TRA RIG'):
+		traRight.click();
+		break;
+
+		case('TRA BOT'):
+		traBottom.click();
+		break;
+
+		case('TRA LEF'):
+		traLeft.click();
+		break;
+
+		case('TUMOV TOP'):
+		movTop.click();
+		break;
+
+		case('MOV RIG'):
+		movRight.click();
+		break;
+
+		case('MOV BOT'):
+		movBottom.click();
+		break;
+
+		case('MOV LEF'):
+		movLeft.click();
 		break;
 	}
 
 	
 }
 // 给控制按钮绑定事件
+// 前进和转向按钮
 go.onclick = function(){
 	GO();
 }
 turnLeft.onclick = function(){
-	TURNLEFT();
+	reg -= 90;
+	turn();
 }
 turnRight.onclick = function(){
-	TURNRIGHT();
+	reg += 90;
+	turn();
 }
 turnBack.onclick = function(){
-	TURNBACK();
+	reg += 180;
+	turn();
 }
 
-// 前进函数
+// 平移按钮
+traTop.onclick = function(){
+	topValue -= 50;
+	move();
+}
+traRight.onclick = function(){
+	leftValue += 50;
+	move();
+}
+traBottom.onclick = function(){
+	topValue += 50;
+	move();
+}
+traLeft.onclick = function(){
+	leftValue -= 50;
+	move();
+}
+
+// mov按钮
+movTop.onclick = function(){
+	reg = 0;	//改变角度值
+	turn();		//转向
+	traTop.click();	//触发平移按钮的click方法
+}
+movRight.onclick = function(){
+	reg = 90;
+	turn();
+	traRight.click();
+}
+movBottom.onclick = function(){
+	reg = 180;
+	turn();
+	traBottom.click();
+}
+movLeft.onclick = function(){
+	reg = -90;
+	turn();
+	traLeft.click();
+}
+
 // 定义方块的初始坐标
 var topValue = 400;
 var leftValue = 400;
+
+// 前进函数
 function GO(){
 	// 根据朝向，决定前进对坐标的改变
+	var face = reg / 90 % 4;
+	console.log(face);
 	switch(face)
 	{
 		case(0):
@@ -59,18 +146,25 @@ function GO(){
 		break;
 
 		case(1):
+		case(-3):
 		leftValue +=50;
 		break;
 
 		case(2):
+		case(-2):
 		topValue += 50;
 		break;
 
 		case(3):
+		case(-1):
 		leftValue -=50;
 		break;
-
 	}
+	move();
+}
+
+// 移动函数
+function move(){
 	// 防止小方块超出网格的判定
 	if (topValue < 50) {
 		topValue = 50;
@@ -87,44 +181,11 @@ function GO(){
 	box.style.left = leftValue + "px";
 	console.log("top:"+topValue+"left:"+leftValue);
 }
-// 转向实现：定义一个变量face，根据face的值判定旋转角度
-var face = 0;
-function turn(){
-	// 将face限定在1~3间
-	if (face === 4) {
-		face = 0;
-	} else if (face === -1) {
-		face = 3;
-	} else if (face ===5) {
-		face = 1;
-	}
-	switch(face)
-	{
-		case(0):
-		box.style.transform = "rotate(0deg)";
-		break;
-		case(1):
-		box.style.transform = "rotate(90deg)";
-		break;
-		case(2):
-		box.style.transform = "rotate(180deg)";
-		break;
-		case(3):
-		box.style.transform = "rotate(270deg)";
-		break;
-	}
-}
 
+// 定义初始角度
+var reg = 0;
 // 转向函数
-function TURNLEFT(){
-	face--;
-	turn();
-}
-function TURNRIGHT(){
-	face++;
-	turn();
-}
-function TURNBACK(){
-	face+=2;
-	turn();
+function turn(){
+	var rotate = "rotate(" + reg + "deg)"
+	box.style.transform = rotate;
 }
