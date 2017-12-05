@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务六</title>
+	<style>
+	body{
+		text-align: center;
+		margin: 0;
+	}
+	button{
+		background-color: yellowgreen;
+		color: #fff;
+		margin-top: 20px;
+	}
+	#mask{
+		display: none;
+		background-color: rgba(0,0,0,.5);
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+	#popup{
+		display: none;
+		position: absolute;
+		width: 500px;
+		height: 250px;
+		left: 100px;
+		top: 100px;
+		background-color: #fff;
+		z-index: 999;
+		box-shadow: 0 0 10px #aaa inset;
+	}
+</style>
+</head>
+<body>
+	<button id="show">显示弹出层</button>
+	<div id="mask">
+	</div>
+	<div id="popup">
+		<button id="close">关闭</button>
+	</div>
+	<script src="js/task6.js"></script>
+</body>
+</html>
