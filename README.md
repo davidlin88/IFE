@@ -389,3 +389,6 @@ case(-3):
 leftValue +=50;
 break;
 ```
+## 任务四-听指令的小方块2
+[代码预览](https://davidlin88.github.io/IFE/耀耀学院/任务四-听指令的小方块2.html)
+* 触发按钮的点击函数：1.`btnObject.click();`或`btnObject.onclick();`，前者是方法，后者是事件，***不知道实际使用有什么区别，待补充**
