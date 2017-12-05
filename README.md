@@ -33,14 +33,14 @@
 ## 任务四-三栏式布局
 [代码预览1](https://davidlin88.github.io/IFE/小薇学院/任务四-三栏式布局-float.html)
 [代码预览2](https://davidlin88.github.io/IFE/小薇学院/任务四-三栏式布局-position.html)
-* 代码预览1中，对黄色块用`float`浮动中，使用了
+* 代码预览1中，使用了
 ```
 margin: auto;
 position: absolute;
 top: 0;right: 0;bottom: 0;left: 0;
 ```
 来达到让灰色块水平垂直居中的目的，有称此方法为“绝对居中”；
-* 代码预览2中，对黄色块用`positon:absolute`定位中，使用
+* 代码预览2中，使用
 ```
  position: relative;
  margin: 0 auto;
