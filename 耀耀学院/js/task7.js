@@ -7,7 +7,7 @@ for (var i = 0; i < ascBtn.length; i++) {
 			sortTable(i+1,true);
 		}
 		descBtn[i].onclick = function(){
-			sortTable(i+1,false);
+			sortTable(i+1);
 		}
 
 	}(i);
@@ -22,16 +22,13 @@ function sortTable(colNum,flag){
 		rowsArr[i] = tbody.rows[i];
 		colsArr[i] = rowsArr[i].cells[colNum];
 	}
-	// 排序
+	// 降序排序
+	colsArr.sort(function(a,b){
+		return b.innerHTML - a.innerHTML;
+	});
+	// 根据flag判断是否反排序
 	if (flag) {
-		colsArr.sort(function(a,b){
-			return a.innerHTML - b.innerHTML;
-		});
-	} 
-	else {
-		colsArr.sort(function(a,b){
-			return b.innerHTML - a.innerHTML;
-		});
+		colsArr.reverse();
 	}
 	
 	// 排序后放入临时数组中
