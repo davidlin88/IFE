@@ -22,6 +22,9 @@
 * [任务二-多个表单项的动态检验](#任务二-多个表单项的动态检验)
 * [任务三-表单联动](#任务三-表单联动)
 * [任务四-听指令的小方块1](#任务四-听指令的小方块1)
+* [任务五-听指令的小方块2](#任务五-听指令的小方块1)
+* [任务四-听指令的小方块1](#任务四-听指令的小方块1)
+* [任务四-听指令的小方块1](#任务四-听指令的小方块1)
 # 小薇学院(html+css)
 ## 任务三-定位和居中
 [代码预览1](https://davidlin88.github.io/IFE/小薇学院/任务三-定位和居中-float.html)
@@ -389,6 +392,54 @@ case(-3):
 leftValue +=50;
 break;
 ```
-## 任务四-听指令的小方块2
+## 任务五-听指令的小方块2
 [代码预览](https://davidlin88.github.io/IFE/耀耀学院/任务四-听指令的小方块2.html)
 * 触发按钮的点击函数：1.`btnObject.click();`或`btnObject.onclick();`，前者是方法，后者是事件，***不知道实际使用有什么区别，待补充**
+
+## 任务六-弹出层
+[代码预览](https://davidlin88.github.io/IFE/耀耀学院/任务六-弹出层.html)
+* 接触了面向对象的编程思想，目前理解：简单说就是把`我吃夜宵`的`吃`给封装起来，就算换成`你吃西红柿`也没有问题
+* 拖拽原理：1.取`onmouseup++onmousedown`时的初始`clientX`和`clientY`，打开开关；2.开关打开的条件下，在`onmousemove`中取即时的xy坐标，根据xy的改变量设置元素的`offsetTop`和`offsetLeft`；3.关闭开关
+* 遇到的问题：元素瞬移，可能原因：1.元素本身未设置top和left值；2.因`margin`和`padding`的存在，导致move中坐标计算与鼠标移动不同步；3.未绝对定位
+* 解决办法：仔细确认move中设置的坐标是否有其他因素影响或是否设置
+## 任务七-表格排序
+[代码预览](https://davidlin88.github.io/IFE/耀耀学院/任务六-弹出层.html)
+* 实现原理：1.获取表格数据，赋给数组；2.排序；3.将排序后数组放入临时数组；4.用临时数组内容替换原表格内容
+* 碰到的一个炒鸡头大的问题叙述：本意是将核心代码全部放在一个函数里，因为有升序和降序的关系，给函数设了一个参数`flag`，根据`flag`的有无进行升序或降序排列。事实上行不通！原代码如下：<br/>
+```
+if (!flag) {
+	colsArr.sort(function(a,b){
+		return a.innerHTML - b.innerHTML;
+	});
+} 
+else {
+	colsArr.sort(function(a,b){
+		return b.innerHTML - a.innerHTML;
+	});
+}
+```
+* `flag`的值，一个我写的false，一个没写（`undefined`），结果是`else`后的语句不能被执行，无论想升序还是降序都只能执行第一个大括号里的内容；
+* 调试加了一百遍啊一百遍后，发现原来问题出在：即使没有定义`flag`，`!flag`的值也是true，所以blablabla！！知道问题出在哪解决办法就很简单了，把`false`改成`true`，`!flag`改成`flag`，再简化下代码，ojbk~
+```
+// 降序排序
+colsArr.sort(function(a,b){
+	return b.innerHTML - a.innerHTML;
+});
+// 根据flag判断是否反向排序
+if (flag) {
+	colsArr.reverse();
+}
+```
+* ***和闭包有关的一个重要常见问题：***在给排序控件span绑定排序函数时，始终失败，原代码：
+```
+for (var i = 0; i < ascBtn.length; i++) {
+	ascBtn[i].onclick = function(){
+		sortTable(i+1,true);
+	}
+	descBtn[i].onclick = function(){
+		sortTable(i+1);
+	}
+}
+```
+* 调试发现循环后，i始终为最后一次循环的值，知乎上一个类似问题的解释大概是：`sortTable(i+1)`在点击的时候才会设置i，此时i已经经历了循环，不是当初的值了；
+* 解决办法：
