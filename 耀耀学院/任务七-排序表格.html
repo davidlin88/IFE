@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务七</title>
+	<style>
+	table{
+		border-collapse: collapse;
+		font-family: "微软雅黑";
+		text-align: center;
+		margin: 0 auto;
+	}
+	td{
+		border:2px solid rgb(213,213,213);
+		width: 172px;
+		height: 60px;
+	}
+	tbody td{
+		height: 48px;
+	}
+	thead td{
+		background-color: rgb(91,91,91);
+		color:white;
+		position: relative;
+	}
+	.asc{
+		border-bottom: 10px solid #fff;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		position: absolute;
+		right: 33px;
+		top: 18px;
+		cursor: pointer;
+	}
+	.desc{
+		border-top: 10px solid #fff;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		position: absolute;
+		right: 33px;
+		top: 38px;
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<td>姓名
+				</td>
+				<td>语文
+					<span class="asc"></span>
+					<span class="desc"></span>
+				</td>
+				<td>数学
+					<span class="asc"></span>
+					<span class="desc"></span>
+				</td>
+				<td>英语
+					<span class="asc"></span>
+					<span class="desc"></span>
+				</td>
+				<td>总分
+					<span class="asc"></span>
+					<span class="desc"></span>
+				</td>
+			</tr>
+		</thead>
+		<tr>
+			<td>小明</td>
+			<td>80</td>
+			<td>90</td>
+			<td>70</td>
+			<td>240</td>
+		</tr>
+		<tr>
+			<td>小红</td>
+			<td>90</td>
+			<td>60</td>
+			<td>90</td>
+			<td>240</td>
+		</tr>
+		<tr>
+			<td>小亮</td>
+			<td>60</td>
+			<td>100</td>
+			<td>70</td>
+			<td>230</td>
+		</tr>
+	</table>
+	<script src="js/task7.js"></script>
+</body>
+</html>
